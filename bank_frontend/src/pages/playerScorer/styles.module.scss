@@ -1,0 +1,44 @@
+.container{
+    max-width: 720px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  .container h1{
+    color: #fff;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+
+.standingsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+  
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    td {
+        color: #fff;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  
+    tr:hover {
+      background-color: #ddd;
+    }
+  
+    th:first-child, td:first-child {
+      text-align: left;
+    }
+  }

@@ -1,0 +1,55 @@
+.container{
+    max-width: 720px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  
+  .container h1{
+    color: #fff;
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  .contactCard {
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .cardImage {
+    margin-right: 20px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+    color: #333;
+    margin-top: 30px; /* Ajuste para adicionar espaço entre a imagem e o título */
+  }
+  
+  .cardIcons {
+    display: flex;
+  
+    a {
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 15px;
+      margin-top: 10px;
+  
+      svg {
+        color: #333;
+        transition: color 0.3s ease-in-out;
+  
+        &:hover {
+          color: #3fffa3;
+        }
+      }
+    }
+  }
+  

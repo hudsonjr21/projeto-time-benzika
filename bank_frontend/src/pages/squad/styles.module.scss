@@ -1,0 +1,21 @@
+.container {
+    max-width: 720px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  .container h1{
+    color: var(--white);
+    margin-left: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .playerList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  

@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// criar uma migration: yarn prisma migrate dev
+
+model User {
+  id String @id @default(uuid())
+  name String
+  email String
+  password String
+  cellNumber String
+  role String @default("user")
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("users")
+}
+
+model Team{
+  id String @id @default(uuid())
+  name String
+  logo String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("teams")
+  players Player[]
+  homeGames Game[] @relation("home_team")
+  awayGames Game[] @relation("away_team")
+
+}
+
+model Player{
+  id String @id @default(uuid())
+  name String
+  profile String
+  birthday String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  team Team @relation(fields: [team_id], references: [id])
+  position Position @relation(fields: [position_id], references: [id])
+
+  @@map("players")
+  team_id String
+  position_id String
+  gameDetails GameDetail[]
+}
+
+model Game{
+  id String @id @default(uuid())
+  numberGame Int
+  day String
+  draft Boolean @default(true)
+  match String
+  location String
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  home_team Team @relation("home_team", fields: [home_team_id], references: [id])
+  away_team Team @relation("away_team", fields: [away_team_id], references: [id])
+  
+
+  @@map("games")
+  gameDetails GameDetail[]
+  scores Score[]
+  home_team_id String
+  away_team_id String
+}
+
+model GameDetail{
+  id String @id @default(uuid())
+  score Int
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  game Game @relation(fields: [game_id], references: [id])
+  player Player @relation(fields: [player_id], references: [id])
+
+  @@map("gameDetails")
+  game_id String
+  player_id String
+
+}
+
+model Position {
+  id String @id @default(uuid())
+  name String
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("positions")
+  players Player[]
+}
+
+model Score{
+  id String @id @default(uuid())
+  home_score Int
+  away_score Int
+  
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+   game Game @relation(fields: [game_id], references: [id])
+
+  @@map("scores")
+  game_id String
+}
